@@ -18,16 +18,19 @@ const (
 	dbName   = "test"
 )
 
+var ERRORNOTFOUD error
+
 func QueryById(DB *sql.DB, sqlstring string, id int) (*sql.Rows, error) {
 	rows, err := DB.Query(sqlstring, id)
-
 	// error wrap
+	ERRORNOTFOUD = errors.New("Not Found")
 	switch {
 	case err == sql.ErrNoRows:
-		newErr := errors.Wrap(err, "No such record.")
+		// newErr := errors.Wrap(err, "N")
+		newErr := errors.Wrapf(ERRORNOTFOUD, fmt.Sprintf("sql: %s, error: %v", sqlstring, err))
 		return nil, newErr
 	case err != nil:
-		newErr := errors.Wrap(err, "sql excuted failed.")
+		newErr := errors.Wrapf(err, fmt.Sprintf("sql: %s, error: %v", sqlstring, err))
 		return nil, newErr
 	}
 	return rows, err
@@ -50,5 +53,8 @@ func main() {
 	sql := "SELECT * FROM TABLE WHERE id=?"
 	id := 1
 	result, queryerr := QueryById(DB, sql, id)
+	if errors.Is(queryerr, ERRORNOTFOUD) {
+		fmt.Println("查不到数据")
+	}
 	fmt.Print(result, queryerr)
 }

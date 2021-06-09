@@ -32,3 +32,8 @@ message Person {
 message ContactBook {
     repeated Person persons = 1;
 }
+
+
+service PhonePerson{
+
+}

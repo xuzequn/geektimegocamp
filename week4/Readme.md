@@ -53,3 +53,9 @@ fork一个继承侦听套接字的新进程。
 https://blog.csdn.net/guyan0319/article/details/90240731
 
 4、写一个项目满足基本的目录结构和工程，代码需要包含对数据层、业务层、API 注册，以及 main 函数对于服务的注册和启动，信号处理
+
+grpc的使用
+
+go get google.golang.org/grpc
+
+https://studygolang.com/articles/23761?fr=sidebar

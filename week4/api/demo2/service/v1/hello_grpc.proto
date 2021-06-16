@@ -1,0 +1,18 @@
+syntax = "proto3"; // protobuf 版本
+
+package v1; //生成包名
+
+option go_package = "./;v1"; // 生成代码目录 
+
+service Greeter { // 定义服务
+    rpc SayHello (HelloRequest) returns (HelloReply) {}  // 函数sayhello,参数定义在hello request ， 返回参数定义在hello reply
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloReply {
+    string message = 1;
+}
+

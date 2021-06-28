@@ -7,6 +7,23 @@ import (
 	"syscall"
 )
 
+// func forceShutdownIfNeed() {
+// 	time.AfterFunc(time.Minute, func() {
+// 		os.Exit((1))
+// 	})
+// }
+
+// func shutdown() {
+// 	// 执行各种动作
+// 	services.Range(func(key, value interface{}) bool {
+// 		service := value.(Service)
+// 		go func() {
+// 			service.ShutDown()
+// 		}()
+// 		return true
+// 	})
+// }
+
 func main() {
 
 	AddService()

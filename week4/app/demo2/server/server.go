@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"context"
@@ -16,7 +16,7 @@ func (s *server) SayHello(ctx context.Context, in *service.HelloRequest) (*servi
 	return &service.HelloReply{Message: "hello" + in.Name}, nil
 }
 
-func main() {
+func Startserver() {
 	// 监听本地端口
 	lis, err := net.Listen("tcp", ":8080")
 	if err != nil {
